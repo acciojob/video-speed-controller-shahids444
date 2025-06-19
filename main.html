@@ -1,21 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Video Speed Scrubber</title>
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Custom Video Player</title>
+<style>
+  /* Basic styling */
+  #player {
+    max-width: 750px;
+    margin: 20px auto;
+    background: #333;
+    color: white;
+    font-family: Arial, sans-serif;
+  }
+  video {
+    width: 100%;
+    display: block;
+  }
+  .controls {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+    background: #222;
+  }
+  .progress {
+    flex: 1;
+    height: 8px;
+    background: #555;
+    cursor: pointer;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .progress__filled {
+    width: 0%;
+    background: #f90;
+    height: 100%;
+    transition: width 0.1s linear;
+  }
+  input[type="range"] {
+    width: 100px;
+  }
+  button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+  }
+</style>
 </head>
 <body>
 
-  <div class="wrapper">
-    <video class="flex" width="765" height="430" src="http://clips.vorwaerts-gmbh.de/VfE_html5.mp4" controls></video>
-    <div class="speed">
-      <div class="speed-bar">1×</div>
-    </div>
-  </div>
+<div id="player">
+  <video id="video" src="https://www.w3schools.com/html/mov_bbb.mp4"></video>
 
-<script  src="./script.js">
-  //Your code goes here
-</script>
+  <div class="controls">
+    <button class="player__button toggle" id="playPause">►</button>
+
+    <button id="rewind10">« 10s</button>
+    <button id="forward25">25s »</button>
+
+    <div class="progress" id="progress">
+      <div class="progress__filled" id="progressFilled"></div>
+    </div>
+
+    <label for="volume">Volume</label>
+    <input type="range" id="volume" min="0" max="1" step="0.01" value="0.75" />
+
+    <label for="playbackSpeed">Speed</label>
+    <input type="range" id="playbackSpeed" min="0.25" max="3" step="0.05" value="1" />
+  </div>
+</div>
+
+<script src="scripts.js"></script>
 </body>
 </html>
