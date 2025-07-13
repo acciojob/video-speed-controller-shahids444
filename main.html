@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Video Speed Controller</title>
 
-  <!-- Styling (keep here so only JS is external) -->
+  <!-- In‑page styles only; JS is external -->
   <style>
     *{margin:0;padding:0;box-sizing:border-box;}
     body{
@@ -29,7 +29,6 @@
       margin-bottom:20px;
     }
     .player__controls{display:flex;flex-direction:column;gap:15px;}
-    /* Progress bar */
     .progress{
       height:8px;background:rgba(255,255,255,0.2);border-radius:4px;
       position:relative;cursor:pointer;overflow:hidden;transition:height .2s;
@@ -40,7 +39,6 @@
       background:linear-gradient(90deg,#ff6b6b,#ffa500);
       transition:width .1s;
     }
-    /* Control row */
     .player__controls-row{
       display:flex;flex-wrap:wrap;align-items:center;gap:15px;
     }
@@ -94,9 +92,10 @@
       <div class="player__controls-row">
         <button class="player__button toggle">►</button>
 
-        <!-- skip buttons have data-skip attributes so JS is tiny -->
-        <button class="player__button" data-skip="-10">« 10s</button>
-        <button class="player__button" data-skip="25">25s »</button>
+        <!-- NEW rewind button expected by Cypress -->
+        <button class="player__button rewind" data-skip="-10">⏪ 10s</button>
+
+        <button class="player__button" data-skip="25">25s »</button>
 
         <div class="control-group">
           <label class="control-label" for="volume">Volume</label>
